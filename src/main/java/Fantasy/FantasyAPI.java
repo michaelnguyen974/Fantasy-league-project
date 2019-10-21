@@ -12,7 +12,7 @@ public class FantasyAPI {
     public static void main(String[] args) throws IOException {
         try {
 
-            URL url = new URL("https://jsonplaceholder.typicode.com/posts/1");
+            URL url = new URL("https://fantasy.premierleague.com/api/entry/2515433/history/");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/json");
@@ -40,5 +40,7 @@ public class FantasyAPI {
 
         }
     }
+
+    // next thing to do is to parse the data and get the exact
 
 }
