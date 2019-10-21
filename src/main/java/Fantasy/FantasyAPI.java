@@ -15,9 +15,9 @@ public class FantasyAPI {
             URL url = new URL("https://fantasy.premierleague.com/api/entry/2515433/history/");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Accept", "application/json"); // redundant code
 
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) { // throws error if status code is not 200!
                 throw new RuntimeException("Failed : HTTP error code : " + connection.getResponseCode());
             }
 
