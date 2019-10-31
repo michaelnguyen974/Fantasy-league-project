@@ -8,14 +8,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class FantasyAPI {
-    // http://localhost:8080/RESTfulExample/json/product/get
+
     public static void main(String[] args) throws IOException {
+        FantasyAPI fApi = new FantasyAPI();
+        fApi.run();
+    }
+
+    public void run() {
         try {
 
             URL url = new URL("https://fantasy.premierleague.com/api/entry/2515433/history/");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            connection.setRequestProperty("Accept", "application/json"); // redundant code
 
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) { // throws error if status code is not 200!
                 throw new RuntimeException("Failed : HTTP error code : " + connection.getResponseCode());
@@ -23,10 +27,11 @@ public class FantasyAPI {
 
             BufferedReader bufferReader = new BufferedReader( new InputStreamReader(connection.getInputStream()));
 
-            String output;
+            String JSONoutput;
             System.out.println("Json response: ");
-            while ((output = bufferReader.readLine()) != null) {
-                System.out.println(output);
+            while ((JSONoutput = bufferReader.readLine()) != null) {
+
+                System.out.println(JSONoutput);
             }
 
             connection.disconnect();
@@ -41,6 +46,8 @@ public class FantasyAPI {
         }
     }
 
-    // next thing to do is to parse the data and get the exact
+
+    // Refactor code into a method called "run"
+    // Next is to write a test for and mock the response from the fantasy league API
 
 }
